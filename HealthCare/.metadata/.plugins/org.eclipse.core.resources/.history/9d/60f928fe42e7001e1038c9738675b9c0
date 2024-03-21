@@ -1,0 +1,15 @@
+package Health;
+import java.util.Scanner;
+public class BookAppointment {
+	public static void Book_app() {
+		System.out.println("Book Appointment");
+		Scanner input=new Scanner(System.in);
+		int a=input.nextInt();
+		System.out.print(a);
+	}
+	
+	public static void main(String args[]) {
+		Book_app();
+	}
+
+}

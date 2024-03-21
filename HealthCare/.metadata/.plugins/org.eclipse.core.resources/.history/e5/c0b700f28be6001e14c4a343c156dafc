@@ -1,0 +1,59 @@
+package Health;
+import java.sql.DriverManager;
+import java.util.Scanner;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class Doctor_login {
+	static Connection connection = null;
+    static PreparedStatement preparedStatement = null;
+    static ResultSet resultSet = null;
+	
+	public static void dlogin() throws SQLException {
+		
+		String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+        String username = "root";
+        String password = "kiran1415@A";
+        
+		
+		System.out.println("Doctor");
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter id: ");
+		int id=input.nextInt();
+		System.out.print("Enter Password: ");
+		String dpassword=input.next();
+		System.out.println(id+" "+dpassword);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing a connection to the database
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
+            String sqlu="select * from doctor where id=?;";
+            if(connection!=null) {
+            	System.out.println("Done........!");
+            	preparedStatement = connection.prepareStatement(sqlu);
+                preparedStatement.setInt(1, id);
+
+                // Executing the query
+                resultSet = preparedStatement.executeQuery();
+                System.out.println(resultSet);
+                
+            }
+			
+		}catch(Exception e) {
+			
+		}finally{
+			if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+		}
+		
+		
+	}
+	public static void main(String args[]) throws SQLException {
+		//dlogin();
+	}
+
+}

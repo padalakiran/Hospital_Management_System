@@ -1,0 +1,46 @@
+package Health;
+import java.util.Scanner;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+public class BookAppointment {
+	public static void Book_app() {
+		System.out.println("Book Appointment");
+		Scanner input=new Scanner(System.in);
+		
+		System.out.print("Enter Id: ");
+		int id=input.nextInt();
+		System.out.print("Enter Name: ");
+		String name=input.next();
+		System.out.print("Enter Phonenumber: ");
+		long phn=input.nextLong();
+		System.out.print("Enter Mail: ");
+		System.out.print("Enter Appoint ment date with (yyyy-mm-dd) Format: ");
+		String ap_da=input.next();
+		System.out.print("Enter category: ");
+		String cat=input.next();
+
+		 try {
+	            // Parse input date string to java.util.Date object
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	            Date inputDate = (Date) dateFormat.parse(ap_da);
+	            java.sql.Date sqlDate = new java.sql.Date(inputDate.getTime());
+	            System.out.println("Date to store in MySQL: " + sqlDate);
+
+	        } catch (Exception e) {
+	            System.out.println("Invalid date format. Please enter date in YYYY-MM-DD format.");
+	        }
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String args[]) {
+		Book_app();
+	}
+
+}

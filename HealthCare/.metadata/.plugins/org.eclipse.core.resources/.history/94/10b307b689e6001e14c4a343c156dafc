@@ -1,0 +1,8 @@
+package Health;
+
+public class Doctor_login {
+	public static void dlogin() {
+		System.out.print("Doctor");
+	}
+
+}

@@ -1,0 +1,42 @@
+package Health;
+import java.util.Scanner;
+
+
+
+public class BookAppointment {
+	public static void Book_app() {
+		System.out.println("Book Appointment");
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter Id: ");
+		int id=input.nextInt();
+		System.out.print("Enter Name: ");
+		String name=input.next();
+		System.out.print("Enter Phonenumber: ");
+		long phn=input.nextLong();
+		System.out.print("Enter Mail: ");
+		System.out.print("Enter Appoint ment date with (yyyy-mm-dd) Format: ");
+		String ap_da=input.next();
+		System.out.print("Enter category: ");
+		String cat=input.next();
+
+		
+		try {
+			
+		}catch(Exception e) {
+			System.out.print("Something went worng......");
+		}finally {
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String args[]) {
+		Book_app();
+	}
+
+}

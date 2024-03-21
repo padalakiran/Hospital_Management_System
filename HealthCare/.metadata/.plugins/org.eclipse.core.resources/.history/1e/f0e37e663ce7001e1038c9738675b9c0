@@ -1,0 +1,8 @@
+package Health;
+
+public class BookAppointment {
+	public static void Book_app() {
+		System.out.println("Book Appointment");
+	}
+
+}

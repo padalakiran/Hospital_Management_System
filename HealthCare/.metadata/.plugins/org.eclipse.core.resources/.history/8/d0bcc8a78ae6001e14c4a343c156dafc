@@ -1,0 +1,46 @@
+package Health;
+import java.sql.DriverManager;
+import java.util.Scanner;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class Doctor_login {
+	static Connection connection = null;
+    static PreparedStatement preparedStatement = null;
+	
+	public static void dlogin() {
+		
+		String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+        String username = "root";
+        String password = "kiran1415@A";
+        
+		
+		System.out.println("Doctor");
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter id: ");
+		int id=input.nextInt();
+		System.out.print("Enter Password: ");
+		String dpassword=input.next();
+		System.out.print(id+" "+dpassword);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing a connection to the database
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
+            String sqlu="select * from doctor where id=?;";
+            System.out.print(connection);
+			
+		}catch(Exception e) {
+			
+		}finally{
+			
+		}
+		
+		
+	}
+	public static void main(String args[]) {
+		dlogin();
+	}
+
+}

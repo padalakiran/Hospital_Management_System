@@ -1,0 +1,69 @@
+
+package Health;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class Patient_Signup {
+    static Connection connection = null;
+    static PreparedStatement preparedStatement = null;
+
+    public static void patient_sign() {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+        String username = "root";
+        String password = "kiran1415@A";
+        Scanner input = new Scanner(System.in);
+
+        try {
+            // Registering the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing a connection to the database
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+            if (connection != null) {
+                System.out.println("Connected to the database!");
+
+                // Taking user input for signup
+                System.out.println("Enter your details for signup:");
+                System.out.print("Name: ");
+                String name = input.nextLine();
+                System.out.print("Phone Number: ");
+                long phoneNumber = input.nextLong();
+                System.out.print("Password: ");
+                String passwordInput = input.next();
+
+                // Inserting the new user into the patient table
+                String sqlQuery = "INSERT INTO patient (name, phonenumber, password) VALUES (?, ?, ?)";
+                preparedStatement = connection.prepareStatement(sqlQuery);
+                preparedStatement.setString(1, name);
+                preparedStatement.setLong(2, phoneNumber);
+                preparedStatement.setString(3, passwordInput);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Signup Successful!");
+                } else {
+                    System.out.println("Signup Failed. Please try again.");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            // Close resources in finally block
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+    	patient_sign();
+    }
+}

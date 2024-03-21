@@ -1,0 +1,82 @@
+package Health;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+
+
+public class BookAppointment {
+	 static Connection connection = null;
+	    static PreparedStatement preparedStatement = null;
+	    static ResultSet resultSet = null;
+	public static void Book_app(int id) {
+		System.out.println("Book Appointment");
+		Scanner input=new Scanner(System.in);
+
+		System.out.print("Enter Name: ");
+		String name=input.next();
+		System.out.print("Enter Phonenumber: ");
+		long phn=input.nextLong();
+		System.out.print("Enter Mail: ");
+		String mail=input.next();
+		System.out.print("Enter Appoint ment date with (yyyy-mm-dd) Format: ");
+		String ap_da=input.next();
+		System.out.print("Enter First letter of Specalisation (cardio/nuro/gyno/physio): ");
+		String spc=input.next();
+    	String cat="";
+    	if(spc.equals("c") || spc.equals("C")) {
+    		cat="cardio";
+    	}else if(spc.equals("n") || spc.equals("N")){
+    		cat="nuro";
+    	}else if(spc.equals("g") || spc.equals("G")) {
+    		cat="gyno";
+    	}else if(spc.equals("p") || spc.equals("P")) {
+    		cat="physio";
+    	}else {
+    		System.out.print("Enter Correct opption");
+    	}
+
+		
+		try {
+			String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+	        String username = "root";
+	        String password = "kiran1415@A";
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(jdbcUrl, username, password);
+            if (connection!=null) {
+            	System.out.print("Done.........");
+            	String su="Inserto into appointment( id,name,phonenumber,Mail,ap_date,catgroy) values(?,?,?,?,?,?) ";
+            	preparedStatement=connection.prepareStatement(su);
+            	preparedStatement.setInt(1, id);
+	        	preparedStatement.setString(2, name);
+	        	preparedStatement.setLong(3, phn);
+	        	preparedStatement.setString(4, mail);
+	        	preparedStatement.setString(5, ap_da);
+	        	preparedStatement.setString(6, cat);
+	        	int r=preparedStatement.executeUpdate();
+	        	System.out.print(r);
+            }
+			System.out.print(id);
+            
+		}catch(Exception e) {
+			System.out.print(e);
+		}finally {
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String args[]) {
+		Book_app(1);
+	}
+
+	
+
+}
