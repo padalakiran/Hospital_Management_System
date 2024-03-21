@@ -22,7 +22,7 @@ public class Patient_Signup {
     public static void patient_sign() {
         String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
         String username = "root";
-        String password = "kiran1415@A";
+        String password = "MySQL Password";
         Scanner input = new Scanner(System.in);
         ResultSet resultSet = null;
         try {
@@ -94,3 +94,4 @@ public class Patient_Signup {
     	//patient_sign();
     }
 }
+//github:- padalakiran
