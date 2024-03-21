@@ -25,7 +25,7 @@ public class Admin_login {
 		        try {
 		        	String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
 		    	    String username = "root";
-		    	    String password = "kiran1415@A";
+		    	    String password = "MySQL Database";
 		    	    Scanner input = new Scanner(System.in);
 		            // Registering the MySQL JDBC driver
 		            Class.forName("com.mysql.cj.jdbc.Driver");
@@ -219,4 +219,4 @@ public class Admin_login {
 	    	//login();
 	    }
 }
-
+// github:- padalakiran
