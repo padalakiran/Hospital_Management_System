@@ -41,7 +41,7 @@ public class BookAppointment {
         try {
             String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
             String username = "root";
-            String password = "kiran1415@A";
+            String password = "MySQl Password";
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
@@ -79,3 +79,4 @@ public class BookAppointment {
        // Book_app(1);
     }
 }
+// github:- padalakiran
