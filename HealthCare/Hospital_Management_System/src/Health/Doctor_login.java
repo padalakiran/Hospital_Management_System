@@ -21,9 +21,9 @@ public class Doctor_login {
     
 	public static void dlogin() throws SQLException {
 		
-		String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+	String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
         String username = "root";
-        String password = "kiran1415@A";
+        String password = "MySQL Password";
         
 		
 		System.out.println("Doctor");
@@ -112,3 +112,4 @@ public class Doctor_login {
 	}
 
 }
+//github:- padalakiran
