@@ -24,7 +24,7 @@ public class Patient_login {
     static void plogin() {
         String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
         String username = "root";
-        String password = "kiran1415@A";
+        String password = "MySQL Password";
         Scanner input = new Scanner(System.in);
         Scanner ab = new Scanner(System.in);
 
@@ -127,3 +127,4 @@ public class Patient_login {
  //       plogin();
     }
 }
+//github:- padalakiran
