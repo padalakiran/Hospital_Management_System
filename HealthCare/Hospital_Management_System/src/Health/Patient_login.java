@@ -38,8 +38,8 @@ public class Patient_login {
             if (connection != null) {
                 System.out.println("Connected to the database!");
                 String sqlQuery = "SELECT * FROM patient";
-
-                while (true) {
+                boolean to=true;
+                while (to) {
                     // Creating a prepared statement
                     preparedStatement = connection.prepareStatement(sqlQuery);
                     // Executing the query and obtaining the result set
@@ -64,6 +64,8 @@ public class Patient_login {
                         if (Givenid == Userid && UserPassword.equals(Givenpassword)) {
                             loginSuccessful = true;
                             break;
+                        }else{
+                            to=false;
                         }
                     }
 
