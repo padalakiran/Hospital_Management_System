@@ -1,0 +1,222 @@
+package Health;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class Admin_login {
+	 	static Connection connection = null;
+	    static PreparedStatement preparedStatement = null;
+	    static ResultSet resultSet = null;
+	    
+	    
+	    public static int options() {
+	        System.out.println("\nWelcome to XYZ Hospital");
+	        System.out.println("\n1.Register Doctor \n2.Book Appointment \n3.Show Appointments \n4.Show Doctors \n5.LogOut");
+	        Scanner a = new Scanner(System.in);
+	        System.out.print("Please Select An Option: ");
+	        int ab = a.nextInt();
+	        return ab;
+	        
+	    }
+	    public static void login() {
+		        try {
+		        	String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+		    	    String username = "root";
+		    	    String password = "kiran1415@A";
+		    	    Scanner input = new Scanner(System.in);
+		            // Registering the MySQL JDBC driver
+		            Class.forName("com.mysql.cj.jdbc.Driver");
+
+		            // Establishing a connection to the database
+		            connection = DriverManager.getConnection(jdbcUrl, username, password);
+
+		            if (connection != null) {
+		                System.out.println("Connected to database");
+		                System.out.print("Enter ID: ");
+		                int id =input.nextInt();
+		                System.out.print("Enter Password: ");
+		                String pass=input.next();
+		                //System.out.print(id+" "+pass);
+		                
+		                String sqlst="select * from admin where id=?;";
+		                preparedStatement = connection.prepareStatement(sqlst);
+                        preparedStatement.setInt(1, id);
+                        resultSet = preparedStatement.executeQuery();
+                        boolean status= false;
+                        while(resultSet.next()) {
+                        	int id1 = resultSet.getInt("id");
+                        	String pass1=resultSet.getString("password");
+                        	
+                        	if(id==id1 && pass.equals(pass1)) {
+                        		status=true;
+                        	}
+                        	
+                        }
+                        if(status) {
+                        	System.out.println("Login Sucuss.....");
+                        	int ab;
+                        	do {
+                        	
+                        	ab=options();
+                	        switch(ab) {
+                	        case 1:
+                	        	System.out.println("Register Doctor");
+                	        	
+               	        	
+                	        	
+                	        	
+                	            
+                	        	
+                	        	
+                	        	String sqlQuery1 = "SELECT * FROM doctor WHERE id = ?";
+                                preparedStatement = connection.prepareStatement(sqlQuery1);
+                                int x=Patient_Signup.id_generator();
+                                preparedStatement.setInt(1, x);
+
+                                // Executing the query
+                                resultSet = preparedStatement.executeQuery();
+                                
+                                if (resultSet.next()) {
+                                	int j=0;
+                                	
+                                    System.out.println("ID " + x + " is present in the table.");
+                                    x=Patient_Signup.id_generator();
+                                	
+                                }else {
+                                	String sqld="Insert into doctor (id,doctor_name,phonenumber,mail,spc ,password) values(?,?,?,?,?,?);";
+                    	        	preparedStatement=connection.prepareStatement(sqld);
+                    	        	System.out.print("Enter Doctor Name: ");
+                    	        	String n=input.next();
+                    	        	System.out.print("Enter Phone Number: ");
+                    	        	long pn=input.nextLong();
+                    	        	System.out.print("Enter Email: ");
+                    	        	String mail=input.next();
+                    	        	System.out.print("Enter First letter of Specalisation (cardio/nuro/gyno/physio): ");
+                    	        	String spc=input.next();
+                    	        	String a="";
+                    	        	if(spc.equals("c") || spc.equals("C")) {
+                    	        		a="cardio";
+                    	        	}else if(spc.equals("n") || spc.equals("N")){
+                    	        		a="nuro";
+                    	        	}else if(spc.equals("g") || spc.equals("G")) {
+                    	        		a="gyno";
+                    	        	}else if(spc.equals("p") || spc.equals("P")) {
+                    	        		a="physio";
+                    	        	}else {
+                    	        		System.out.print("Enter Correct opption");
+                    	        	}
+                    	        	System.out.print("Enter Password: ");
+                    	        	String pass2=input.next();
+                    	        	
+                    	        	
+                    	        	preparedStatement.setInt(1, x);
+                    	        	preparedStatement.setString(2, n);
+                    	        	preparedStatement.setLong(3, pn);
+                    	        	preparedStatement.setString(4, mail);
+                    	        	preparedStatement.setString(5, a);
+                    	        	preparedStatement.setString(6, pass2);
+                    	        	
+                    	        	int r=preparedStatement.executeUpdate();
+                    	        	System.out.print(x+" "+n+" "+pn+" "+mail+" "+a+" "+pass2+" "+r);
+                                }
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	
+                	        	break;
+                	        case 2:
+                	        	BookAppointment.Book_app();
+                	        	break;
+                	        case 3:
+                	        	System.out.print("Show Appointments");
+                	        	break;
+                	        case 4:
+                	        	System.out.print("Show Doctors");
+                	        	break;
+                	        case 5:
+                	        	System.out.print("Log out");
+                	        	break;
+                	        default:
+                	        	System.out.print("Invalid Option");
+                	        	break;
+                	        }
+                        	}while (ab != 5);
+                        	
+                        	
+                        	
+                        }else{
+                    		System.out.println("id or password worng");
+                    	}
+                      
+		                
+		             }
+
+		                    
+		                
+		            
+		        } catch (Exception e) {
+		            System.out.println(e);
+		        } finally {
+		            // Close resources in finally block
+		            try {
+		                if (resultSet != null) resultSet.close();
+		                if (preparedStatement != null) preparedStatement.close();
+		                if (connection != null) connection.close();
+		            } catch (Exception ex) {
+		                System.out.println(ex);
+		            }
+		        }
+		    }
+	    public static void main(String[] args) {
+	    	login();
+	    }
+}
+

@@ -1,0 +1,19 @@
+package Health;
+import java.util.Scanner;
+
+
+public class Doctor_login {
+	public static void dlogin() {
+		System.out.print("Doctor");
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter id: ");
+		int id=input.nextInt();
+		System.out.print("Enter Password: ");
+		String password=input.next();
+		System.out.print(id+" "+password);
+	}
+	public static void main(String args[]) {
+		dlogin();
+	}
+
+}
