@@ -1,5 +1,10 @@
-> [!note]  
-> All Files Are build and Run By using My local Environment Change According to Your Environment
+<div style="align: center;">
+  <img src="https://readme-typing-svg.demolab.com?font=italic&weight=100&size=30&pause=1000&color=1B3BF7&center=true&random=false&width=435&lines=Hospital+Management+System+">
+</div>
+
+> [!note]
+> Please note that all files have been built and run in my local environment. You may need to make adjustments for your specific environment.
+
 # Hospital Management System
 Hospital Management System having The Functionalities Like Patient login/signup, Admin login, Doctor Registration, Book Appointments and Store data in MySQL Database.
 ## Prerequisite
