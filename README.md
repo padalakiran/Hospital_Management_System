@@ -76,6 +76,4 @@ To Build with project we need to create Several tables in the MySQL Database to 
 
 </td></tr> </table>
 
-The Output of the Program will be</br>
-![image](https://github.com/padalakiran/Hospital_Management_System/assets/73814328/d7a80c18-f62d-416d-9f75-fcdee661eca6)
 
