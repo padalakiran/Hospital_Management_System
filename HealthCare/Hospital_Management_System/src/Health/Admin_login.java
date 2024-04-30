@@ -23,7 +23,7 @@ public class Admin_login {
 	    }
 	    public static void login() {
 		        try {
-		        	String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
+		            String jdbcUrl = "jdbc:mysql://localhost:3306/healthcare";
 		    	    String username = "root";
 		    	    String password = "MySQL Database";
 		    	    Scanner input = new Scanner(System.in);
