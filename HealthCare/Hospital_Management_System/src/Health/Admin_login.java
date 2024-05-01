@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class Admin_login {
-	 	static Connection connection = null;
+	    static Connection connection = null;
 	    static PreparedStatement preparedStatement = null;
 	    static ResultSet resultSet = null;
 	    
